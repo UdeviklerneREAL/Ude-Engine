@@ -4,8 +4,11 @@ import javax.swing.*;
 
 public class Panel extends JPanel {
 
-    public Panel(Main engine) {
+    public Panel() {
         setVisible(true);
-        setSize(100, 100);
+    }
+
+    public void clear() {
+        getGraphics().clearRect(0, 0, getWidth(), getHeight());
     }
 }

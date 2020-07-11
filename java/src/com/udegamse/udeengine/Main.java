@@ -5,23 +5,26 @@ import javax.swing.*;
 public class Main extends JFrame implements Runnable {
 
     Thread thread;
-    Panel frame;
+    Panel panel;
 
     public Main(String title) {
-        frame = new Panel(this);
+        panel = new Panel();
 
-        add(frame);
+        add(panel);
         setVisible(true);
         setResizable(true);
         setSize(getToolkit().getScreenSize());
         setTitle(title);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         thread = new Thread(this);
         thread.run();
     }
 
     public void run() {
-
+        while (true) {
+            panel.clear();
+        }
     }
 
     public static void main(String[] args) {

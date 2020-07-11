@@ -13,6 +13,6 @@ public class Renderer {
     }
 
     public void drawImage(BufferedImage image, int scaleX, int scaleY, int x, int y) {
-        panel.getGraphics().drawImage(image, x, y, scaleX * engine.getWidth(), scaleY * engine.getHeight(), null);
+        panel.getGraphics().drawImage(image, x, y, scaleX * image.getWidth(), scaleY * image.getHeight(), null);
     }
 }

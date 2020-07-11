@@ -12,12 +12,14 @@ public class Main extends JFrame implements Runnable {
     Thread thread;
     Panel panel;
     Renderer renderer;
+    Input input;
     Boolean running;
     final double UPDATE_CAP = 1.0/60.0;
 
     public Main(String title) {
         panel = new Panel(this);
         renderer = new Renderer(this);
+        input = new Input(this);
 
         add(panel);
         setVisible(true);
@@ -56,6 +58,8 @@ public class Main extends JFrame implements Runnable {
             while (unprocessedTime >= UPDATE_CAP) {
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
+
+
 
                 if(frameTime >= 1.0) {
                     frameTime = 0;

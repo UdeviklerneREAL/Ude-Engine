@@ -17,7 +17,7 @@ public class Main extends JFrame implements Runnable {
 
     public Main(String title) {
         panel = new Panel(this);
-        renderer = new Renderer(panel);
+        renderer = new Renderer(this);
 
         add(panel);
         setVisible(true);
@@ -68,7 +68,7 @@ public class Main extends JFrame implements Runnable {
             if(render) {
                 panel.clear();
                 try {
-                    renderer.drawImage(ImageIO.read(new File(getClass().getResource("/test.png").toURI())), 0, 0);
+                    renderer.drawImage(ImageIO.read(new File(getClass().getResource("/test.png").toURI())), 1, 1, 0, 0);
                 } catch (IOException | URISyntaxException e) {
                     e.printStackTrace();
                 }

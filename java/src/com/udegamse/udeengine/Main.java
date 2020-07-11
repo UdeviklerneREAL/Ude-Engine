@@ -1,16 +1,23 @@
 package com.udegamse.udeengine;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Main extends JFrame implements Runnable {
 
     Thread thread;
     Panel panel;
+    Renderer renderer;
     Boolean running;
     final double UPDATE_CAP = 1.0/60.0;
 
     public Main(String title) {
-        panel = new Panel();
+        panel = new Panel(this);
+        renderer = new Renderer(panel);
 
         add(panel);
         setVisible(true);
@@ -60,6 +67,11 @@ public class Main extends JFrame implements Runnable {
 
             if(render) {
                 panel.clear();
+                try {
+                    renderer.drawImage(ImageIO.read(new File(getClass().getResource("/test.png").toURI())), 0, 0);
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
                 frames++;
             }
             else {

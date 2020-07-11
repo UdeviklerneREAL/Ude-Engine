@@ -2,7 +2,7 @@ package com.udegamse.udeengine;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,12 +21,14 @@ public class Main extends JFrame implements Runnable {
         renderer = new Renderer(this);
         input = new Input(this);
 
-        add(panel);
+        setUndecorated(true);
         setVisible(true);
+        add(panel);
         setResizable(true);
         setSize(getToolkit().getScreenSize());
         setTitle(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
 
         thread = new Thread(this);
         thread.run();
@@ -59,7 +61,7 @@ public class Main extends JFrame implements Runnable {
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
 
-
+                input.update();
 
                 if(frameTime >= 1.0) {
                     frameTime = 0;

@@ -1,5 +1,6 @@
 package com.udegamse.udeengine;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Renderer {
@@ -14,5 +15,9 @@ public class Renderer {
 
     public void drawImage(BufferedImage image, int scaleX, int scaleY, int x, int y) {
         panel.getGraphics().drawImage(image, x, y, scaleX * image.getWidth(), scaleY * image.getHeight(), null);
+    }
+
+    public void drawString(String str, int x, int y) {
+        panel.getGraphics().drawString(str, x, y);
     }
 }

@@ -1,8 +1,9 @@
 package com.udegamse.udeengine;
 
+import com.udegamse.udeengine.templates.GameTemplate;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -13,10 +14,12 @@ public class Main extends JFrame implements Runnable {
     Panel panel;
     Renderer renderer;
     Input input;
+    GameTemplate game;
     Boolean running;
     final double UPDATE_CAP = 1.0/60.0;
 
-    public Main(String title) {
+    public Main(String title, GameTemplate game) {
+        this.game = game;
         panel = new Panel(this);
         renderer = new Renderer(this);
         input = new Input(this);
@@ -61,6 +64,8 @@ public class Main extends JFrame implements Runnable {
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
 
+                game.update(this, (float)UPDATE_CAP);
+
                 input.update();
 
                 if(frameTime >= 1.0) {
@@ -73,11 +78,7 @@ public class Main extends JFrame implements Runnable {
 
             if(render) {
                 panel.clear();
-                try {
-                    renderer.drawImage(ImageIO.read(new File(getClass().getResource("/test.png").toURI())), 1, 1, 0, 0);
-                } catch (IOException | URISyntaxException e) {
-                    e.printStackTrace();
-                }
+                game.renderer(this, renderer);
                 frames++;
             }
             else {
@@ -91,9 +92,5 @@ public class Main extends JFrame implements Runnable {
         }
 
         dispose();
-    }
-
-    public static void main(String[] args) {
-        Main engine = new Main("Title");
     }
 }

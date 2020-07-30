@@ -1,7 +1,10 @@
 package com.udegamse.udeengine;
 
 import java.awt.*;
+
 import java.awt.image.BufferedImage;
+
+import javax.swing.*;
 
 public class Renderer {
 
@@ -19,5 +22,9 @@ public class Renderer {
 
     public void drawString(String str, int x, int y) {
         panel.getGraphics().drawString(str, x, y);
+    }
+    
+    public void drawLine(int x1, int y1, int x2, int y2) {
+    	panel.getGraphics().drawLine(x1, y1, x2, y2);
     }
 }

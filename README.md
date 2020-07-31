@@ -1,11 +1,11 @@
 # Ude-Engine
 
-The engine is soon udedeted i am working on a version 2.0
+Ude Engine V2
 
 # Documentation
 https://docs.google.com/document/d/1J-lBpiMWCtM3HHfOUbPvEqviubzWEkmillWhvuJu2uY/edit?usp=sharing
-by Kristoffer lund and RafD
+by Kristoffer lund and RafDiol
 
 # Credits
 Engine by kristoffer lund
-UI by RafD
+UI by RafDiol

@@ -1,40 +1,37 @@
-package com.udegamse.udeengine;
+package com.udegames.udeEngine;
 
-import com.udegamse.udeengine.templates.GameTemplate;
+import com.udegames.udeEngine.game.AbstractGame;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.awt.*;
 
-public class Main extends JFrame implements Runnable {
+public class Engine implements Runnable {
+    private Thread thread;
+    private Window window;
+    private Renderer renderer;
+    private Input input;
+    private AbstractGame game;
 
-    Thread thread;
-    Panel panel;
-    Renderer renderer;
-    Input input;
-    GameTemplate game;
-    Boolean running;
-    final double UPDATE_CAP = 1.0/60.0;
+    private boolean running = false;
+    private final double UPDATE_CAP = 1.0/120;
+    public int width = Toolkit.getDefaultToolkit().getScreenSize().width, height = Toolkit.getDefaultToolkit().getScreenSize().height;
+    public float scale = 1f;
+    public String title = "2d fguji";
 
-    public Main(String title, GameTemplate game) {
+    public Engine(AbstractGame game) {
         this.game = game;
-        panel = new Panel(this);
+    }
+
+    public void start() {
+        window = new Window(this);
         renderer = new Renderer(this);
         input = new Input(this);
 
-        setUndecorated(true);
-        setVisible(true);
-        add(panel);
-        setResizable(true);
-        setSize(getToolkit().getScreenSize());
-        setTitle(title);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setExtendedState(MAXIMIZED_BOTH);
-
         thread = new Thread(this);
         thread.run();
+    }
+
+    public void stop() {
+
     }
 
     public void run() {
@@ -72,13 +69,14 @@ public class Main extends JFrame implements Runnable {
                     frameTime = 0;
                     fps = frames;
                     frames = 0;
-                    System.out.println(fps);
                 }
             }
 
             if(render) {
-                panel.clear();
-                game.renderer(this, renderer);
+                renderer.clear();
+                game.render(this, renderer);
+                game.lateRender(this, renderer);
+                window.update();
                 frames++;
             }
             else {
@@ -92,5 +90,17 @@ public class Main extends JFrame implements Runnable {
         }
 
         dispose();
+    }
+
+    private void dispose() {
+
+    }
+
+    public Window getWindow() {
+        return window;
+    }
+
+    public Input getInput() {
+        return input;
     }
 }

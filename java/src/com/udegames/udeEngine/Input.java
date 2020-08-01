@@ -1,10 +1,11 @@
-package com.udegamse.udeengine;
+package com.udegames.udeEngine;
 
 import java.awt.event.*;
 
+
 public class Input implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
 
-    Main engine;
+    private Engine engine;
 
     private final int NUM_KEYS = 256;
     private boolean[] keys = new boolean[NUM_KEYS];
@@ -17,16 +18,16 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     public int mouseX, mouseY;
     public int scroll;
 
-    public Input(Main engine) {
+    public Input(Engine engine) {
         this.engine = engine;
         mouseX = 0;
         mouseY = 0;
         scroll = 0;
 
-        engine.panel.addKeyListener(this);
-        engine.panel.addMouseListener(this);
-        engine.panel.addMouseMotionListener(this);
-        engine.panel.addMouseWheelListener(this);
+        engine.getWindow().getCanvas().addKeyListener(this);
+        engine.getWindow().getCanvas().addMouseMotionListener(this);
+        engine.getWindow().getCanvas().addMouseListener(this);
+        engine.getWindow().getCanvas().addMouseWheelListener(this);
     }
 
     public void update() {
@@ -40,6 +41,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
             buttonsLast[i] = buttons[i];
         }
     }
+
     public boolean isKey(int keyCode) {
         return keys[keyCode];
     }
@@ -106,14 +108,14 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        mouseX = (int)(e.getX());
-        mouseY = (int)(e.getY());
+        mouseX = (int)(e.getX() / engine.scale);
+        mouseY = (int)(e.getY() / engine.scale);
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        mouseX = (int)(e.getX());
-        mouseY = (int)(e.getY());
+        mouseX = (int)(e.getX() / engine.scale);
+        mouseY = (int)(e.getY() / engine.scale);
     }
 
     @Override

@@ -1,0 +1,8 @@
+#engine-version 2.0
+
+"the way this engine works is you make a super class of 'AbstractGame' and in the class make a 'Main function' and in it paste this code
+
+Engine engine = new Engine(new YOU CLASS HERE());
+engine.start();
+
+and hit play boom now you have make you first window in ude engine Have Fun!"

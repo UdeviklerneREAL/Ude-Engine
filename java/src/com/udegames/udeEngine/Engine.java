@@ -15,7 +15,7 @@ public class Engine implements Runnable {
     private final double UPDATE_CAP = 1.0/120;
     public int width = Toolkit.getDefaultToolkit().getScreenSize().width, height = Toolkit.getDefaultToolkit().getScreenSize().height;
     public float scale = 1f;
-    public String title = "2d fguji";
+    public String title = "2D Game";
 
     public Engine(AbstractGame game) {
         this.game = game;
@@ -47,6 +47,7 @@ public class Engine implements Runnable {
         int frames = 0;
         int fps = 0;
 
+        game.Start(this);
         while(running) {
             render = false;
 
@@ -103,4 +104,22 @@ public class Engine implements Runnable {
     public Input getInput() {
         return input;
     }
+
+    /* All the following were made by RafD
+    * The following methods make your code more readable */
+    public void setTitle(String newTitle){
+        getWindow().getFrame().setTitle(newTitle);
+    }
+
+    public void setVisible(boolean isVisible){
+        getWindow().getFrame().setVisible(isVisible);
+    }
+
+    public String getTitle(){ return getWindow().getFrame().getTitle(); }
+
+    public void setIconImage(Image icon){
+        getWindow().getFrame().setIconImage(icon);
+    }
+
+    public Image getIconImage(){ return getWindow().getFrame().getIconImage(); }
 }

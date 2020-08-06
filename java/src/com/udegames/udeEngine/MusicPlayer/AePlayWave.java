@@ -28,6 +28,7 @@ public class AePlayWave extends Thread {
         curPosition = Position.NORMAL;
     }
 
+
     public AePlayWave(String wavfile, Position p) {
         filename = wavfile;
         curPosition = p;
@@ -83,9 +84,11 @@ public class AePlayWave extends Thread {
         try {
             while (nBytesRead != -1) {
                 nBytesRead = audioInputStream.read(abData, 0, abData.length);
-                if (nBytesRead >= 0)
+                if (nBytesRead >= 0) {
                     auline.write(abData, 0, nBytesRead);
+                }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
             return;

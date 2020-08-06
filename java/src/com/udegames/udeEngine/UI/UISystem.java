@@ -1,4 +1,4 @@
-// Ude-Engine UISystem is make by RafD
+// Ude-Engine UISystem.Made by RafD
 
 package com.udegames.udeEngine.UI;
 
@@ -11,7 +11,6 @@ public class UISystem {
 
         if (icon == "info") {
             JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
-
         } else if (icon == "error"){
             JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
         } else if (icon == "warning") {
@@ -37,8 +36,6 @@ public class UISystem {
     public static String InputBox(String title, String message) {
         JFrame frame = new JFrame(title);
 
-        String result = JOptionPane.showInputDialog(frame, message);
-
-        return result;
+        return JOptionPane.showInputDialog(frame, message);
     }
 }

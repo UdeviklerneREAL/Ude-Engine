@@ -4,13 +4,43 @@ import com.udegames.udeEngine.MusicPlayer.AePlayWave;
 
 public class MusicPlayer {
 
-    public static void play(String wavFile)
-    {
+    public static void play(String wavFile) {
         try{
             AePlayWave musicPlayer = new AePlayWave(wavFile);
-            musicPlayer.run();
+            musicPlayer.start();
         } catch (Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    public static void play(String wavFile, boolean threaded){
+        if (threaded){
+            play(wavFile);
+        } else if (!threaded) {
+            try{
+                AePlayWave musicPlayer = new AePlayWave(wavFile);
+                musicPlayer.run();
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public static void play(String wavFile, AePlayWave.Position position){
+        try{
+            AePlayWave musicPlayer = new AePlayWave(wavFile, position);
+            musicPlayer.start();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public static void play(String wavFile, AePlayWave.Position position, boolean threaded){
+        AePlayWave musicPlayer = new AePlayWave(wavFile, position);
+        if (threaded){
+            musicPlayer.start();
+        } else if (!threaded){
+            musicPlayer.run();
         }
     }
 }

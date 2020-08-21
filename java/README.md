@@ -7,4 +7,5 @@ https://docs.google.com/document/d/1J-lBpiMWCtM3HHfOUbPvEqviubzWEkmillWhvuJu2uY/
 by Kristoffer lund and RafDiol
 
 # Credits
-Engine by kristoffer lund and RafaelDiol
+Engine by kristoffer lund,
+UI by RafDiol

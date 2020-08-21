@@ -1,8 +1,9 @@
-<<<<<<< HEAD
-// Ude-Engine UISystem is make by RafD
-=======
-// Ude-Engine UISystem.Made by RafD
->>>>>>> e0169aafa44179d75100e5d6c82a74bbf8dbe13f
+// Ude-Engine UISystem Made by RafD
+
+/*
+* The UISystem allows you to create pop-up notifications for your game.Find out more about
+* the UISystem in the documentation.
+*/
 
 package com.udegames.udeEngine.UI;
 
@@ -15,10 +16,6 @@ public class UISystem {
 
         if (icon == "info") {
             JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
-<<<<<<< HEAD
-
-=======
->>>>>>> e0169aafa44179d75100e5d6c82a74bbf8dbe13f
         } else if (icon == "error"){
             JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
         } else if (icon == "warning") {
@@ -44,12 +41,6 @@ public class UISystem {
     public static String InputBox(String title, String message) {
         JFrame frame = new JFrame(title);
 
-<<<<<<< HEAD
-        String result = JOptionPane.showInputDialog(frame, message);
-
-        return result;
-=======
         return JOptionPane.showInputDialog(frame, message);
->>>>>>> e0169aafa44179d75100e5d6c82a74bbf8dbe13f
     }
 }
